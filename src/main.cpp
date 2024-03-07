@@ -49,7 +49,7 @@ public:
   is_running_(true) {
 
     ros::NodeHandle nh("~");
-    nh.param("config_file_path", config_file_path_, std::string("/root/dev_ws/src/hobot_vio_/config/realsenseD435i.yaml"));
+    nh.param("config_file_path", config_file_path_, std::string("/root/dev_ws/src/hobot_vio/config/realsenseD435i.yaml"));
     // image_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Image>("horizon_vio/horizon_vio_track_image", 5));
     // path_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Path>("horizon_vio/horizon_vio_path", 5));
     odom_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Odom>("/camera/odom/sample", 5));
