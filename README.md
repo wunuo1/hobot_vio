@@ -34,6 +34,7 @@ Realsense与RDK X3连接方式如下图：
  
 **2.运行VIO功能**
 
+(运行前请确定yaml文件中chisquare_check.txt路径正确)
 启动命令，launch文件内包含启动realsense相机和vio算法模块的命令，所以只用运行一个launch文件即可：
 
 ```shell

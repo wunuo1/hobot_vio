@@ -48,6 +48,8 @@ public:
   is_img_updated_(false),
   is_running_(true) {
 
+    ros::NodeHandle nh("~");
+    nh.param("config_file_path", config_file_path_, std::string("/root/dev_ws/src/hobot_vio_/config/realsenseD435i.yaml"));
     // image_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Image>("horizon_vio/horizon_vio_track_image", 5));
     // path_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Path>("horizon_vio/horizon_vio_path", 5));
     odom_publisher_ = std::make_shared<ros::Publisher>(visualizer_nh.advertise<ROS_Odom>("/camera/odom/sample", 5));
@@ -58,6 +60,10 @@ public:
 
     draw_thread_ = std::make_shared<std::thread>(std::bind(
             &ROSVisualizer::DrawTrajectory, this));
+  }
+
+  void GetConfigFilePath(std::string &config_file_path){
+    config_file_path = config_file_path_;
   }
 
   void PublishPose(const Eigen::Matrix<double, 3, 3>&R_GtoCi,
@@ -113,6 +119,7 @@ private:
 
   std::shared_ptr<std::thread> draw_thread_;
   std::atomic_bool is_running_;
+  std::string config_file_path_;
 private:
 
   void wrap_img(sensor_msgs::Image &img_msg, const cv::Mat &mat) {
@@ -227,7 +234,8 @@ int main(int argc, char **argv) {
   std::shared_ptr<RosSubNode> rosSubNode;
   //  Step 1. Loading config file
 
-  std::string path_config = "/root/dev_ws/src/hobot_vio_ros1/config/realsenseD435i.yaml";
+  std::string path_config;
+  ROSVisualizer::GetInstance()->GetConfigFilePath(path_config);
 
   rosSubNode = std::make_shared<RosSubNode>();
 

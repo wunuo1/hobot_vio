@@ -5,6 +5,7 @@
     <param name="image_topic" type="string" value="/camera/color/image_raw" />
     <param name="imu_topic" type="string" value="/camera/imu" />
     <param name="sample_gap" type="int" value="2" />
+    <param name="config_file_path" type="string" value="/root/dev_ws/src/hobot_vio/config/realsenseD435i_color.yaml" />
   </node>
 
   <include file="$(find realsense2_camera)/launch/rs_camera.launch">

@@ -5,6 +5,7 @@
     <param name="image_topic" type="string" value="/camera/infra1/image_rect_raw" />
     <param name="imu_topic" type="string" value="/camera/imu" />
     <param name="sample_gap" type="int" value="2" />
+    <param name="config_file_path" type="string" value="/root/dev_ws/src/hobot_vio/config/realsenseD435i.yaml" />
   </node>
 
   <include file="$(find realsense2_camera)/launch/rs_camera.launch">
@@ -18,9 +19,9 @@
     <arg name="publish_odom_tf" value="false"/>
     <arg name="gyro_fps" value="200"/>
     <arg name="accel_fps" value="200"/>
-    <arg name="color_fps" value="30"/>
+    <arg name="infra_fps" value="30"/>
     <arg name="unite_imu_method" value="linear_interpolation"/>
-    <arg name="color_width" value="640"/>
-    <arg name="color_height" value="480"/>
+    <arg name="infra_width" value="640"/>
+    <arg name="infra_height" value="480"/>
   </include>
 </launch>

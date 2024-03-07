@@ -1,5 +1,5 @@
 %YAML:1.0
-chisquare_file: /root/dev_ws/src/hobot_vio_ros1/config/chisquare_check.txt
+chisquare_file: /root/dev_ws/src/hobot_vio/config/chisquare_check.txt
 downsample: 1
 num_pts: 250
 gravity: !!opencv-matrix
