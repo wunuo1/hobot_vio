@@ -46,6 +46,12 @@ source /dev_ws/devel/local_setup.bash
 roslaunch hobot_vio hobot_vio_infra1.launch 
 ```
 
+程序启动后，为了保证运行效果，建议禁用红外发射器，避免在图像上产生不必要的白点，命令如下：
+
+```shell
+rosrun dynamic_reconfigure dynparam set /camera/stereo_module emitter_enabled 0
+```
+
 程序运行后，会进入等待初始化状态，此时必须相机必须保持静止。
  ![init](./imgs/init.png)
 此时相机向前平移一段距离，此时算法检测到相机平移则会完成初始化，
